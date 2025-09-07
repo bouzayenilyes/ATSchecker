@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Checker - ATS Score Analysis</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-file-alt"></i> CV Checker</h1>
+        <p>Professional CV Analysis with ATS Scoring for HR</p>
+      </header>
+
+      <div class="main-content">
+        <!-- Upload Section -->
+        <div class="upload-section">
+          <div class="upload-card">
+            <h2><i class="fas fa-upload"></i> Upload CV</h2>
+            <form id="cvForm" enctype="multipart/form-data">
+              <div class="file-upload">
+                <input
+                  type="file"
+                  id="cvFile"
+                  name="cv"
+                  accept=".pdf,.doc,.docx"
+                  required
+                />
+                <label for="cvFile" class="file-label">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <span>Choose CV File</span>
+                  <small>PDF, DOC, DOCX (Max 5MB)</small>
+                </label>
+              </div>
+
+              <div class="analysis-options">
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="basicAnalysis"
+                    name="analysisType"
+                    value="basic"
+                    checked
+                  />
+                  <label for="basicAnalysis">
+                    <i class="fas fa-chart-bar"></i>
+                    Basic ATS Analysis
+                  </label>
+                </div>
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="jobComparison"
+                    name="analysisType"
+                    value="comparison"
+                  />
+                  <label for="jobComparison">
+                    <i class="fas fa-balance-scale"></i>
+                    Compare with Job Description
+                  </label>
+                </div>
+              </div>
+
+              <div
+                id="jobDescriptionSection"
+                class="job-description-section"
+                style="display: none"
+              >
+                <label for="jobDescription">Job Description:</label>
+                <textarea
+                  id="jobDescription"
+                  name="jobDescription"
+                  placeholder="Paste the job description here..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="analyze-btn">
+                <i class="fas fa-search"></i>
+                Analyze CV
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Loading Section -->
+        <div id="loadingSection" class="loading-section" style="display: none">
+          <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Analyzing your CV...</p>
+          </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section" style="display: none">
+          <div class="results-header">
+            <h2><i class="fas fa-chart-line"></i> Analysis Results</h2>
+            <button id="newAnalysis" class="new-analysis-btn">
+              <i class="fas fa-plus"></i> New Analysis
+            </button>
+          </div>
+
+          <!-- ATS Score Card -->
+          <div class="score-card">
+            <div class="score-display">
+              <div class="score-circle">
+                <span id="scoreValue">0</span>
+                <small>/ 100</small>
+              </div>
+              <div class="score-info">
+                <h3 id="scoreGrade">Grade</h3>
+                <p id="fileName">File Name</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score Breakdown -->
+          <div class="breakdown-card">
+            <h3><i class="fas fa-list-ul"></i> Score Breakdown</h3>
+            <div id="scoreBreakdown" class="breakdown-items"></div>
+          </div>
+
+          <!-- AI Analysis -->
+          <div class="analysis-card">
+            <h3><i class="fas fa-robot"></i> AI Analysis</h3>
+            <div id="aiAnalysis" class="analysis-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
